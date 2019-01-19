@@ -14,7 +14,7 @@
     <div class="uk-width-1-4@m"></div>
     <div class="uk-width-1-2@m">
       <div class="uk-padding-small">
-        <div class="uk-text-center"><img src="{{ asset('images/logo-colored.png') }}" width="200"></div>
+        <div class="uk-text-center"><a href="./"><img src="{{ asset('images/logo-colored.png') }}" width="200"></a></div>
         <h2 class="uk-margin-small-top uk-margin-remove-bottom">Indulge in an intellectual interchange.</h2>
         <p class="uk-margin-remove-top">Be part of the 2019 International Conference of the Association of Southeast Asian Institution of Higher Learning.</p>
 
