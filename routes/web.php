@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('/register', 'IndexController@register');
+
+Route::post('/register', 'IndexController@register');
