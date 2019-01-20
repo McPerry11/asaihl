@@ -1,0 +1,14 @@
+nav.uk-navbar-container {
+  background: url('../images/background.jpg') !important;
+}
+
+ul.uk-navbar-nav li a {
+  color: white !important;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+ul.uk-navbar-nav li a:hover {
+  text-decoration: underline;
+}

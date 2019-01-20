@@ -18,6 +18,8 @@ Route::post('/register', 'IndexController@register');
 
 // Admin routes
 Route::get('/admin', 'AdminController@login')->name('admin'); // named to prepare for redirection in auth:api
-Route::group([ 'middleware' => 'auth:api', 'prefix' => 'admin' ], function() {
+Route::group([ 'prefix' => 'admin' ], function() {
   Route::get('/dashboard', 'AdminController@index');
+  Route::get('/logs', 'AdminController@logs');
+  Route::get('/logout', 'AdminController@logout');
 });

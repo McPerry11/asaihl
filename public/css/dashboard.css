@@ -1,0 +1,17 @@
+input {
+  border-radius: 50px !important;
+}
+
+span.actions a {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+span.total {
+  display: inline-block;
+}
+
+div#profile-table {
+  max-height: 300px; 
+  overflow: auto;
+}

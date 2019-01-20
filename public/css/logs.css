@@ -1,0 +1,6 @@
+pre {
+  white-space: normal;
+  font-family: 'Ubuntu Mono', sans-serif;
+  height: 350px !important;
+  overflow: auto;
+}

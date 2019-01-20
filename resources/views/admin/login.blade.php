@@ -29,7 +29,7 @@
             <input type="password" class="uk-input uk-width-1-2@m" placeholder="Password">
           </div>
         </form>
-        <a class="uk-margin-top uk-margin-large-bottom" href="register" id="frontliner-header-register">Sign In</a><br>
+        <a class="uk-margin-top uk-margin-large-bottom" href="admin/dashboard" id="frontliner-header-register">Sign In</a><br>
       </div>
     </div>
   </div>
