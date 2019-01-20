@@ -30,5 +30,6 @@
     </div>
   </div>
   @include('scripts')
+  <script src="{{ asset('js/index.js') }}" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

@@ -11,7 +11,13 @@
 |
 */
 
+// Index routes
 Route::get('/', 'IndexController@index');
 Route::get('/register', 'IndexController@register');
-
 Route::post('/register', 'IndexController@register');
+
+// Admin routes
+Route::get('/admin', 'AdminController@login')->name('admin'); // named to prepare for redirection in auth:api
+Route::group([ 'middleware' => 'auth:api', 'prefix' => 'admin' ], function() {
+  Route::get('/dashboard', 'AdminController@index');
+});
