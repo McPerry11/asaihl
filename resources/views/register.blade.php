@@ -50,17 +50,17 @@
               <div class="uk-width-1-6"><h1>1</h1></div>
               <div class="uk-width-5-6 uk-margin-bottom">
                 <div class="uk-margin-small">
-                  <input class="uk-input uk-width-1-3" placeholder="First Name" name="compFirstName1">
-                  <input class="uk-input uk-width-1-3" placeholder="Last Name" name="compLastName1">
-                  <input class="uk-input uk-width-1-6" placeholder="MI" name="compMiddleInitial1">
+                  <input class="uk-input uk-width-1-3" placeholder="First Name" name="compFirstName[]">
+                  <input class="uk-input uk-width-1-3" placeholder="Last Name" name="compLastName[]">
+                  <input class="uk-input uk-width-1-6" placeholder="MI" name="compMiddleInitial[]">
                 </div>
 
                 <div class="uk-margin-small">
-                  <input class="uk-input uk-width-1-1" placeholder="Email" name="compEmail1">
+                  <input class="uk-input uk-width-1-1" placeholder="Email" name="compEmail[]">
                 </div>
 
                 <div class="uk-margin-small">
-                  <input class="uk-input uk-width-1-1" placeholder="Contact Number" name="compContact1">
+                  <input class="uk-input uk-width-1-1" placeholder="Contact Number" name="compContact[]">
                 </div>
               </div>
             </div>
