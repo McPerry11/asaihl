@@ -46,7 +46,7 @@
 
           <div id="register-companion">
             <h4 class="uk-text-center">Companion Management</h4>
-            <div uk-grid class="uk-grid-collapse">
+            <div uk-grid class="uk-grid-collapse" id="register-companion-list">
               <div class="uk-width-1-6"><h1>1</h1></div>
               <div class="uk-width-5-6 uk-margin-bottom">
                 <div class="uk-margin-small">
