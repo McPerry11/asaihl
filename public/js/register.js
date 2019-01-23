@@ -6,45 +6,65 @@ $(() => {
 
     $('button#register-info-button').html('<i class="fas fa-sync fa-spin"></i>')
     Swal.fire({
-      type: 'question', 
-      title: 'Are the information correct?', 
+      type: 'question',
+      title: 'Are the information correct?',
       text: 'Registration information are not editable upon clicking the button'
     }).then(result => {
-      if (!(result.dismiss === Swal.DismissReason.backdrop || result.dismiss === Swal.DismissReason.cancel || result.dismiss === Swal.DismissReason.esc)) {
+      if (
+        !(
+          result.dismiss === Swal.DismissReason.backdrop ||
+          result.dismiss === Swal.DismissReason.cancel ||
+          result.dismiss === Swal.DismissReason.esc
+        )
+      ) {
         $('div#register-info').hide('slide', { direction: 'left' }, 200)
-        $('div#register-companion').show('slide', { direction: 'right' }, 200)  
+        $('div#register-companion').show('slide', { direction: 'right' }, 200)
       }
       $('button#register-info-button').html('Submit')
     })
   })
   $('a#register-companion-add').click(e => {
     let compTemplate = `
-      <div class="uk-width-1-6"><h1>${ compCounter }</h1></div>
+      <div class="uk-width-1-6"><h1>${compCounter}</h1></div>
       <div class="uk-width-5-6 uk-margin-bottom">
         <div class="uk-margin-small">
-          <input class="uk-input uk-width-1-3" placeholder="First Name" name="compFirstName[]">
-          <input class="uk-input uk-width-1-3" placeholder="Last Name" name="compLastName[]">
-          <input class="uk-input uk-width-1-6" placeholder="MI" name="compMiddleInitial[]">
+          <input class="uk-input uk-width-1-3" placeholder="First Name" name="comp_first_name[]">
+          <input class="uk-input uk-width-1-3" placeholder="Last Name" name="comp_last_name[]">
+          <input class="uk-input uk-width-1-6" placeholder="MI" name="comp_middle_initial[]">
         </div>
 
         <div class="uk-margin-small">
-          <input class="uk-input uk-width-1-1" placeholder="Email" name="compEmail[]">
+          <input class="uk-input uk-width-1-1" placeholder="Email" name="comp_email_address[]">
         </div>
 
         <div class="uk-margin-small">
-          <input class="uk-input uk-width-1-1" placeholder="Contact Number" name="compContact[]">
+          <input class="uk-input uk-width-1-1" placeholder="Contact Number" name="comp_contact_number[]">
         </div>
       </div>
       `
     $('div#register-companion-list').append(compTemplate)
     compCounter++
   })
-  $('button#register-companion-button').click(e => {
+
+  // $('button#register-companion-button').click(e => {
+  //   e.preventDefault()
+  // })
+
+  $("form[name='frmRegister']").submit(function(e) {
     e.preventDefault()
-    Swal.fire({
-      title: 'You are now registered to ASAIHL International Conference 2019!',
-      text: 'Please pay the participation fee. Upload your payment slip in the link provided in the index page.',
-      type: 'success'
+
+    $.ajax({
+      type: 'POST',
+      url: api_url + 'registrants',
+      data: $(this).serialize(),
+      success: response => {
+        console.log(response)
+        Swal.fire({
+          title: 'You are now registered to ASAIHL International Conference 2019!',
+          text: 'Please pay the participation fee. Upload your payment slip in the link provided in the index page.',
+          type: 'success'
+        })
+      }
     })
   })
 })

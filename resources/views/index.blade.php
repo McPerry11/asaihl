@@ -22,7 +22,7 @@
         The time for the reconfiguration of universities for the future comes forth.<br>
         Be in part of the venue for intellectual, academic, and multidisciplinary interchanges.
       </p>
-      <a class="uk-margin-top uk-margin-large-bottom" href="register" id="frontliner-header-register">Go to Registration</a><br>
+      <a class="uk-margin-top uk-margin-large-bottom" href="{{ url('register') }}" id="frontliner-header-register">Go to Registration</a><br>
       <small class="uk-margin-small-bottom">If you had paid your accounts already and had registered, upload your slip <a href="http://www.feualabang.edu.ph/asaihl/#about" id="frontliner-header-about">here</a>.<br>
       </small>
       <small class="uk-margin-small-bottom">If you want to know more about ASAIHL, you can click <a href="http://www.feualabang.edu.ph/asaihl/#about" uk-tooltip="title: About the 2019 ASAIHL International Conference" id="frontliner-header-about">here</a>. </small>

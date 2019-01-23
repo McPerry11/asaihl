@@ -15,7 +15,7 @@ class RegistrantController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function index() {
-    return Registrant::with('profile', 'companion');
+    return Registrant::with('profile', 'companions')->get();
   }
 
   /**
@@ -25,9 +25,44 @@ class RegistrantController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request) {
-    $registrant = new Registrant;
+    $profile = new Profile;
 
-    // $registrant->
+    $profile->fill($request->only([
+      'first_name',
+      'last_name',
+      'middle_initial',
+      'institution',
+      'email_address',
+      'contact_number'
+    ]));
+    $profile->barcode = $this->generateBarcode();
+
+    $profile->save();
+
+    $registrant = new Registrant;
+    $registrant->profile()->associate($profile);
+    $registrant->save();
+
+    $companionsCount = count($request->comp_first_name);
+
+    for ($i = 0; $i < $companionsCount; $i++) {
+      $profile = new Profile;
+
+      $profile->first_name     = $request->comp_first_name[$i];
+      $profile->last_name      = $request->comp_last_name[$i];
+      $profile->middle_initial = $request->comp_middle_initial[$i];
+      $profile->institution    = $request->comp_institution[$i];
+      $profile->email_address  = $request->comp_email_address[$i];
+      $profile->contact_number = $request->comp_contact_number[$i];
+      $profile->barcode        = $this->generateBarcode();
+
+      $profile->save();
+
+      $companion = new Companion;
+      $companion->profile()->associate($profile);
+      $companion->registrant()->associate($registrant);
+      $companion->save();
+    }
   }
 
   /**
@@ -37,7 +72,7 @@ class RegistrantController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function show($id) {
-    //
+    return Registrant::with('profile', 'companions')->where('id', $id)->findOrFail();
   }
 
   /**
@@ -59,5 +94,23 @@ class RegistrantController extends Controller {
    */
   public function destroy($id) {
     //
+  }
+
+  /**
+   * @return mixed
+   */
+  public function generateBarcode() {
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    do {
+      $string = '';
+
+      for ($i = 0; $i < 10; $i++) {
+        $string .= $characters[mt_rand(0, strlen($characters) - 1)];
+      }
+
+    } while (Profile::where('barcode', $string)->get()->isNotEmpty());
+
+    return $string;
   }
 }

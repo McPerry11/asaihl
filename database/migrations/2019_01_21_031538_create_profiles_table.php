@@ -13,8 +13,8 @@ class CreateProfilesTable extends Migration {
   public function up() {
     Schema::create('profiles', function (Blueprint $table) {
       $table->increments('id');
-      $table->string('barcode');
-      $table->string('email');
+      $table->string('barcode')->unique();
+      $table->string('email_address');
       $table->string('first_name');
       $table->string('middle_initial');
       $table->string('last_name');
