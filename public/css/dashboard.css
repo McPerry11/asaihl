@@ -15,3 +15,19 @@ div#profile-table {
   max-height: 300px; 
   overflow: auto;
 }
+
+button#add-users-button {
+  border: 1px solid #ccc;
+  border-radius: 14.9px;
+  padding: 10px;
+  font-family: 'Quicksand', sans-serif;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+button#add-users-button:hover {
+  background-color: #ccc;
+  color: white;
+  transition: background-color 0.2s, color 0.2s;
+}

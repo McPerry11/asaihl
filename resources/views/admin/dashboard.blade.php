@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 @endsection
 
+@section('scripts')
+<script src="{{ asset('js/dashboard.js') }}"></script>
+@endsection
+
 @section('body')
 @include('admin/navbar')
 <div uk-grid class="uk-grid-small">
@@ -90,7 +94,8 @@
         Allowed users should appear here.<br>
         Be mindful in registering new users to the system.
       </p>
-      <span class="uk-margin-bottom total">Total Users: 2</span>
+      <div class="uk-margin-bottom total">Total Users: 2<span class="uk-float-right"><a href="#" uk-toggle="target: #add-users"><i class="fas fa-plus"></i><span class="uk-visible@m"> Add a user</span></a></span></div>
+
 
       <div class="uk-card uk-card-default">
         <div class="uk-padding-small">
@@ -104,8 +109,7 @@
                   <span class="uk-float-right actions">
                     <a href="#"><i class="fas fa-times"></i></a>
                   </span>
-                  User #1<br>
-                  <small class="uk-text-muted">clivefuentebella</small>
+                  clivefuentebella
                 </td>
               </tr>
               <tr>
@@ -113,14 +117,23 @@
                   <span class="uk-float-right actions">
                     <a href="#"><i class="fas fa-times"></i></a>
                   </span>
-                  User #2<br>
-                  <small class="uk-text-muted">clivefuentebella</small>
+                  mjsarmiento
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="add-users" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Add user</h2>
+        <p>Fill in the information below to add a new user.</p>
+        <input type="text" name="username" placeholder="Username" class="uk-input uk-margin-bottom">
+        <input type="password" name="password" placeholder="Password" class="uk-input uk-margin-bottom">
+        <button id="add-users-button">Sign new user</button>
     </div>
   </div>
 </div>
