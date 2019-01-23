@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
+use App\Companion;
 use App\Http\Controllers\Controller;
+use App\Profile;
+use App\Registrant;
+use Illuminate\Http\Request;
 
-class RegistrantController extends Controller
-{
+class RegistrantController extends Controller {
   /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
-  {
-    //
+  public function index() {
+    return Registrant::with('profile', 'companion');
   }
 
   /**
@@ -23,9 +24,10 @@ class RegistrantController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-    // 
+  public function store(Request $request) {
+    $registrant = new Registrant;
+
+    // $registrant->
   }
 
   /**
@@ -34,8 +36,7 @@ class RegistrantController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
-  {
+  public function show($id) {
     //
   }
 
@@ -46,8 +47,7 @@ class RegistrantController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
-  {
+  public function update(Request $request, $id) {
     //
   }
 
@@ -57,8 +57,7 @@ class RegistrantController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
+  public function destroy($id) {
     //
   }
 }
