@@ -26,7 +26,7 @@ class UserController extends Controller {
   public function store(Request $request) {
     $user = new User;
     $user->username = $request->input('username');
-    $user->password = Hash::make($request->input('password', [ 'rounds' => 12 ]));
+    $user->password = Hash::make($request->input('password'), [ 'rounds' => 12 ]);
     $user->save();
 
     return response()->json([ 'success' => true ], 200);

@@ -28,58 +28,21 @@
         <div id="profile-table" data-simplebar>
           <table class="uk-table uk-table-default">
             <tbody>
-              <tr>
-                <td>
-                  <span class="uk-float-right actions">
-                    <a href="#"><i class="far fa-check-square"></i></a>
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i></a>
-                  </span>
-                  Participant #1<br>
-                  <small class="uk-text-muted">
-                    clivefuentebella@gmail.com<br>
-                    09989532547
-                  </small>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="uk-float-right actions">
-                    <a href="#"><i class="far fa-check-square"></i></a>
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i></a>
-                  </span>
-                  Participant #1<br>
-                  <small class="uk-text-muted">
-                    clivefuentebella@gmail.com<br>
-                    09989532547
-                  </small>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="uk-float-right actions">
-                    <a href="#"><i class="far fa-check-square"></i></a>
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i></a>
-                  </span>
-                  Participant #1<br>
-                  <small class="uk-text-muted">
-                    clivefuentebella@gmail.com<br>
-                    09989532547
-                  </small>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="uk-float-right actions">
-                    <a href="#"><i class="far fa-check-square"></i></a>
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i></a>
-                  </span>
-                  Participant #1<br>
-                  <small class="uk-text-muted">
-                    clivefuentebella@gmail.com<br>
-                    09989532547
-                  </small>
-                </td>
-              </tr>
+              @foreach($registrants as $registrant)
+                <tr>
+                  <td>
+                    <span class="uk-float-right actions">
+                      <a href="#"><i class="far fa-check-square"></i></a>
+                      <a href="#"><i class="fas fa-file-invoice-dollar"></i></a>
+                    </span>
+                    {{ $registrant->first_name }} {{ $registrant->middle_initial }} {{ $registrant->last_name }}<br>
+                    <small class="uk-text-muted">
+                      {{ $registrant->email_address }}<br>
+                      {{ $registrant->contact_number }}
+                    </small>
+                  </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -94,7 +57,7 @@
         Allowed users should appear here.<br>
         Be mindful in registering new users to the system.
       </p>
-      <div class="uk-margin-bottom total">Total Users: 2<span class="uk-float-right"><a href="#" uk-toggle="target: #add-users"><i class="fas fa-plus"></i><span class="uk-visible@m"> Add a user</span></a></span></div>
+      <div class="uk-margin-bottom total">Total Users: {{ $users->count() }}<span class="uk-float-right"><a href="#" uk-toggle="target: #add-users"><i class="fas fa-plus"></i><span class="uk-visible@m"> Add a user</span></a></span></div>
 
 
       <div class="uk-card uk-card-default">
@@ -103,23 +66,17 @@
         </div>
         <div id="profile-table" data-simplebar>
           <table class="uk-table uk-table-default uk-margin-remove-bottom">
-            <tbody>
-              <tr>
-                <td>
-                  <span class="uk-float-right actions">
-                    <a href="#"><i class="fas fa-times"></i></a>
-                  </span>
-                  clivefuentebella
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="uk-float-right actions">
-                    <a href="#"><i class="fas fa-times"></i></a>
-                  </span>
-                  mjsarmiento
-                </td>
-              </tr>
+            <tbody id="profile-table-rows">
+              @foreach($users as $user)
+                <tr>
+                  <td>
+                    <span class="uk-float-right actions">
+                      <a href="#"><i class="fas fa-times"></i></a>
+                    </span>
+                    {{ $user->username }}
+                  </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
