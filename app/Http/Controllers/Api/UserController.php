@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller {
   /**
@@ -23,7 +24,12 @@ class UserController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request) {
-    //
+    $user = new User;
+    $user->username = $request->input('username');
+    $user->password = Hash::make($request->input('password', [ 'rounds' => 12 ]));
+    $user->save();
+
+    return response()->json([ 'success' => true ], 200);
   }
 
   /**
