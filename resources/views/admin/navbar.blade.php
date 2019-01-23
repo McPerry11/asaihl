@@ -2,13 +2,13 @@
   <div class="uk-navbar-left">
     <ul class="uk-navbar-nav">
       <li class="uk-margin-left">
-        <a href="dashboard">
+        <a href="/asaihl/public/admin/dashboard">
           <span class="uk-hidden@m"><i class="fas fa-columns"></i></span>
           <span class="uk-visible@m">Dashboard</span>
         </a>
       </li>
       <li>
-        <a href="logs">
+        <a href="/asaihl/public/admin/logs">
           <span class="uk-hidden@m"><i class="far fa-list-alt"></i></span>
           <span class="uk-visible@m">Logs</span>
         </a>

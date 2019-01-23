@@ -12,4 +12,11 @@ class Companion extends Model {
   public function profile() {
     return $this->belongsTo('App\Profile', 'profile_id');
   }
+
+  /**
+   * @return mixed
+   */
+  public function registrant() {
+    return $this->belongsTo('App\Registrant', 'registrant_id');
+  }
 }

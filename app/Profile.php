@@ -11,7 +11,7 @@ class Profile extends Model {
    */
   protected $fillable = [
     'barcode',
-    'email',
+    'email_address',
     'first_name',
     'middle_initial',
     'last_name',
@@ -24,8 +24,27 @@ class Profile extends Model {
    */
   protected $attributes = [
     'contact_number' => null,
-    'institution'    => null
+    'institution'    => null,
+    'barcode'        => ''
   ];
+
+  /**
+   * @return mixed
+   */
+  protected function setBarcodeAttribute() {
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    do {
+      $string = '';
+
+      for ($i = 0; $i < 10; $i++) {
+        $string .= $characters[mt_rand(0, strlen($characters) - 1)];
+      }
+
+    } while ($this->where('barcode', $string)->get()->isNotEmpty());
+
+    $this->attributes['barcode'] = $string;
+  }
 
   /**
    * @return mixed
