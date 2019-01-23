@@ -19,14 +19,14 @@
         People who registered for the event should appear here.<br>
         Verify them as participants if they have paid the full amount already.
       </p>
-      <span class="uk-margin-bottom total">Total Registrants: 100</span>
+      <span class="uk-margin-bottom total">Total Registrants: {{ \App\Registrant::all()->count() }}</span>
 
       <div class="uk-card uk-card-default uk-margin-remove-bottom">
         <div class="uk-padding-small">
           <input type="text" name="search-registrant" class="uk-input" placeholder="Search registrant...">
         </div>
         <div id="profile-table" data-simplebar>
-          <table class="uk-table uk-table-default">
+          <table class="uk-table uk-table-default uk-margin-remove-bottom">
             <tbody>
               @foreach($registrants as $registrant)
                 <tr>
@@ -35,10 +35,10 @@
                       <a href="#"><i class="far fa-check-square"></i></a>
                       <a href="#"><i class="fas fa-file-invoice-dollar"></i></a>
                     </span>
-                    {{ $registrant->first_name }} {{ $registrant->middle_initial }} {{ $registrant->last_name }}<br>
+                    {{ $registrant->profile->first_name }} {{ $registrant->profile->middle_initial }}. {{ $registrant->profile->last_name }}<br>
                     <small class="uk-text-muted">
-                      {{ $registrant->email_address }}<br>
-                      {{ $registrant->contact_number }}
+                      {{ $registrant->profile->email_address }}<br>
+                      {{ $registrant->profile->contact_number }}
                     </small>
                   </td>
                 </tr>
