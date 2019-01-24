@@ -16,7 +16,7 @@ div#profile-table {
   overflow: auto;
 }
 
-button#add-users-button {
+button.classic {
   border: 1px solid #ccc;
   border-radius: 14.9px;
   padding: 10px;
@@ -26,8 +26,25 @@ button#add-users-button {
   transition: background-color 0.2s, color 0.2s;
 }
 
-button#add-users-button:hover {
+button.classic:hover {
   background-color: #ccc;
   color: white;
   transition: background-color 0.2s, color 0.2s;
+}
+
+button.danger {
+  background-color: #3b0502 !important;
+  border: 0px;
+  border-radius: 14.9px;
+  padding: 10px;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button.danger:hover {
+  background-color: #8c3200 !important;
+  transition: background-color 0.2s;
 }

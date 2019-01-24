@@ -32,13 +32,26 @@
                 <tr>
                   <td>
                     <span class="uk-float-right actions">
-                      <a href="#"><i class="far fa-check-square"></i></a>
-                      <a href="#"><i class="fas fa-file-invoice-dollar"></i></a>
+                      @if(\App\Participant::where('profile_id', $registrant->profile->id)->count() <= 0) 
+                        <a href="#" data-name="{{ $registrant->profile->first_name }} {{ $registrant->profile->middle_initial }}. {{ $registrant->profile->last_name }}" data-id="{{ $registrant->profile->id }}" uk-toggle="target: #confirm-verify"><i class="far fa-check-square"></i></a>
+                      @endif
                     </span>
-                    {{ $registrant->profile->first_name }} {{ $registrant->profile->middle_initial }}. {{ $registrant->profile->last_name }}<br>
+                    {{ $registrant->profile->first_name }} {{ $registrant->profile->middle_initial }}. {{ $registrant->profile->last_name }}
+                    @if(\App\Participant::where('profile_id', $registrant->profile->id)->count() > 0) 
+                      (Participant)
+                    @endif
+                    <br>
                     <small class="uk-text-muted">
                       {{ $registrant->profile->email_address }}<br>
                       {{ $registrant->profile->contact_number }}
+                    </small><br>
+                    <small>
+                      @if(\Illuminate\Support\Facades\File::exists(public_path() . '/uploads/' . $registrant->profile->barcode))
+                        Payment slips:
+                        @foreach(\Illuminate\Support\Facades\File::files(public_path() . '/uploads/' . $registrant->profile->barcode) as $file)
+                          <a href="{{ substr($file, stripos($file, 'public')) }}" target="_blank" class="uk-margin-small-left">{{ substr($file, stripos($file, $registrant->profile->barcode)) }}</a>
+                        @endforeach
+                      @endif
                     </small>
                   </td>
                 </tr>
@@ -83,15 +96,22 @@
       </div>
     </div>
   </div>
-
-  <div id="add-users" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <h2 class="uk-modal-title">Add user</h2>
-        <p>Fill in the information below to add a new user.</p>
-        <input type="text" name="username" placeholder="Username" class="uk-input uk-margin-bottom">
-        <input type="password" name="password" placeholder="Password" class="uk-input uk-margin-bottom">
-        <button id="add-users-button">Sign new user</button>
-    </div>
+</div>
+<div id="add-users" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+      <h2 class="uk-modal-title">Add user</h2>
+      <p>Fill in the information below to add a new user.</p>
+      <input type="text" name="username" placeholder="Username" class="uk-input uk-margin-bottom">
+      <input type="password" name="password" placeholder="Password" class="uk-input uk-margin-bottom">
+      <button class="classic" id="add-users-button">Sign new user</button>
+  </div>
+</div>
+<div id="confirm-verify" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+      <h2 class="uk-modal-title">Confirm verification</h2>
+      <p>Are you sure you want to register <span id="confirm-verify-name"></span>?</p>
+      <button class="classic uk-margin-small-right" id="confirm-verify-button">Yes, register as participant</button>
+      <button class="danger" id="reject-verify-button">No, continue browsing</button>
   </div>
 </div>
 @endsection

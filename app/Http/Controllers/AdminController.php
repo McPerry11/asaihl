@@ -24,7 +24,7 @@ class AdminController extends Controller
    */
   public function index(Request $request) {
     $users = \App\User::all();
-    $registrants = \App\Registrant::with('profile')->limit(25)->get();
+    $registrants = \App\Registrant::with('profile', 'companions')->limit(25)->get();
 
     return view('admin/dashboard', [ 'users' => $users, 'registrants' => $registrants ]);
   }

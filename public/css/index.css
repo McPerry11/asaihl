@@ -29,6 +29,22 @@ div#frontliner-header a#frontliner-header-register:hover {
   transition: background-color 0.2s, color 0.2s; 
 }
 
+button#upload-slip-button {
+  border: 1px solid #ccc;
+  border-radius: 14.9px;
+  padding: 10px;
+  font-family: 'Quicksand', sans-serif;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+button#upload-slip-button:hover {
+  background-color: #ccc;
+  color: white;
+  transition: background-color 0.2s, color 0.2s;
+}
+
 @media only screen and (min-width : 320px) {
   div#frontliner-header h1 {
     font-size: 2em;

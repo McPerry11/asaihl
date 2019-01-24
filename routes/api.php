@@ -17,5 +17,6 @@ Route::apiResources([
   'users'        => 'UserController',
   'registrants'  => 'RegistrantController',
   'participants' => 'ParticipantController',
-  'profiles'     => 'ProfileController'
+  'profiles'     => 'ProfileController',
+  'payments'     => 'PaymentController'
 ]);

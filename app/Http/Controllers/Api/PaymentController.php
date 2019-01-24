@@ -25,7 +25,14 @@ class PaymentController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    if ($request->hasFile('payment_slip')) {
+      $barcode = $request->input('barcode'); 
+      $registrant = \App\Profile::where('barcode', $barcode)->get(); 
+
+      $file = $request->file('payment_slip');
+      $name = time() . '.' . $file->getClientOriginalExtension();
+      $file->move(public_path('/uploads/' . $request->input('barcode')), $name);
+    }
   }
 
   /**

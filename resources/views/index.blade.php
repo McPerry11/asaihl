@@ -23,10 +23,22 @@
         Be in part of the venue for intellectual, academic, and multidisciplinary interchanges.
       </p>
       <a class="uk-margin-top uk-margin-large-bottom" href="{{ url('register') }}" id="frontliner-header-register">Go to Registration</a><br>
-      <small class="uk-margin-small-bottom">If you had paid your accounts already and had registered, upload your slip <a href="http://www.feualabang.edu.ph/asaihl/#about" id="frontliner-header-about">here</a>.<br>
+      <small class="uk-margin-small-bottom">If you had paid your accounts already and had registered, upload your slip <a href="#" id="frontliner-header-about" uk-toggle="target: #upload-slip">here</a>.<br>
       </small>
       <small class="uk-margin-small-bottom">If you want to know more about ASAIHL, you can click <a href="http://www.feualabang.edu.ph/asaihl/#about" uk-tooltip="title: About the 2019 ASAIHL International Conference" id="frontliner-header-about">here</a>. </small>
     </div>
+  </div>
+</div>
+<div id="upload-slip" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+      <h2 class="uk-modal-title">Upload payment slip</h2>
+      <p>Upload your payment slip here. Your barcode is also needed to distinguish you from other users.</p>
+      <form enctype="mulipart/form-data" method="POST">
+        @csrf
+        <input type="text" name="barcode" placeholder="Barcode" class="uk-input uk-margin-bottom">
+        Payment slip: <input type="file" name="payment_slip"><br>
+        <button id="upload-slip-button" class="uk-margin-top">Upload your payment slip</button>
+      </form>
   </div>
 </div>
 @endsection

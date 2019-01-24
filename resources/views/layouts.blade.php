@@ -10,7 +10,7 @@
 
   <title>ASAIHL International Conference</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Quicksand|Ubuntu+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Questrial|Quicksand|Ubuntu+Mono" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
   <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">

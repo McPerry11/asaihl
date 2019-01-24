@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Participant; 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -25,7 +26,11 @@ class ParticipantController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $participant = new Participant; 
+    $participant->fill($request->only([
+      'profile_id'
+    ]));
+    $participant->save();
   }
 
   /**
