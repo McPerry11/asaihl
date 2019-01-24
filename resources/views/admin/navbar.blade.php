@@ -7,12 +7,12 @@
           <span class="uk-visible@m">Dashboard</span>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a href="/asaihl/public/admin/logs">
           <span class="uk-hidden@m"><i class="far fa-list-alt"></i></span>
           <span class="uk-visible@m">Logs</span>
         </a>
-      </li>
+      </li> -->
       <!-- <li>
         <a href="#">
           <span class="uk-hidden@m"><i class="fas fa-sliders-h"></i></span>
