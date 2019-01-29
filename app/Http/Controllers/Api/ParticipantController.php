@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Participant; 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\VerificationMail;
+use App\Participant;
+use App\Profile;
+use Illuminate\Http\Request;
+use Mail;
 
-class ParticipantController extends Controller
-{
+class ParticipantController extends Controller {
   /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
-  {
+  public function index() {
     //
   }
 
@@ -24,13 +25,16 @@ class ParticipantController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-    $participant = new Participant; 
+  public function store(Request $request) {
+    $participant = new Participant;
     $participant->fill($request->only([
       'profile_id'
     ]));
     $participant->save();
+
+    $profile = Profile::find($request->profile_id);
+
+    Mail::to($profile->email_address)->send(new VerificationMail($profile));
   }
 
   /**
@@ -39,8 +43,7 @@ class ParticipantController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
-  {
+  public function show($id) {
     //
   }
 
@@ -51,8 +54,7 @@ class ParticipantController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
-  {
+  public function update(Request $request, $id) {
     //
   }
 
@@ -62,8 +64,7 @@ class ParticipantController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
+  public function destroy($id) {
     //
   }
 }
