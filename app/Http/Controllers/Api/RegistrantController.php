@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Companion;
 use App\Http\Controllers\Controller;
+use App\Mail\RegistrationMail;
 use App\Profile;
 use App\Registrant;
 use Illuminate\Http\Request;
+use Mail;
 
 class RegistrantController extends Controller {
   /**
@@ -43,7 +45,9 @@ class RegistrantController extends Controller {
     $registrant->profile()->associate($profile);
     $registrant->save();
 
-    $companionsCount = count($request->comp_first_name);
+    Mail::to($profile->email_address)->send(new RegistrationMail($profile));
+
+    $companionsCount = $request->comp_first_name[0] ? count($request->comp_first_name) : 0;
 
     for ($i = 0; $i < $companionsCount; $i++) {
       $profile = new Profile;
@@ -58,13 +62,13 @@ class RegistrantController extends Controller {
 
       $profile->save();
 
+      Mail::to($profile->email_address)->send(new RegistrationMail($profile));
+
       $companion = new Companion;
       $companion->profile()->associate($profile);
       $companion->registrant()->associate($registrant);
       $companion->save();
     }
-
-    return response()->json([ 'barcode' => $profile->barcode, 'success' => true ], 200);
   }
 
   /**
