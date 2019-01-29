@@ -1,5 +1,6 @@
 let compCounter = 2
 $(() => {
+
   $('div#register-companion').hide()
   $('button#register-info-button').click(e => {
     e.preventDefault()
@@ -58,10 +59,9 @@ $(() => {
       url: api_url + 'registrants',
       data: $(this).serialize(),
       success: response => {
-        console.log(response)
         Swal.fire({
           title: 'You are now registered to ASAIHL International Conference 2019!',
-          text: 'Please pay the participation fee. Upload your payment slip in the link provided in the index page.',
+          html: 'Remember your barcode. Upload your payment slip in the link provided in the index page.<br><br>Barcode: <b>' + response.barcode + '</b>',
           type: 'success'
         })
       }

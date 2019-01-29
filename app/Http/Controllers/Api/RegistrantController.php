@@ -63,6 +63,8 @@ class RegistrantController extends Controller {
       $companion->registrant()->associate($registrant);
       $companion->save();
     }
+
+    return response()->json([ 'barcode' => $profile->barcode, 'success' => true ], 200);
   }
 
   /**

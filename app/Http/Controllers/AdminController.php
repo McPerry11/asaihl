@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash; 
+use Illuminate\Support\Facades\Auth; 
 
 class AdminController extends Controller
 {
@@ -14,6 +16,21 @@ class AdminController extends Controller
    */
   public function login(Request $request) {
     return view('admin/login');
+  }
+
+  public function authenticate(Request $request) {
+    $username = $request->input('username'); 
+    $password = $request->input('password'); 
+
+    $user = \App\User::where('username', $username); 
+     
+    if ($user && Hash::check($password, $user->password)) {
+      Auth::login($user);
+
+      return response()->json([ 'success' => true ], 200); 
+    }
+
+    return response()->json([ 'success' => false ], 403);
   }
 
   /**
