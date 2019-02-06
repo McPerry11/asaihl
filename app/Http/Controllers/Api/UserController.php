@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller {
+  public function __construct() {
+    $this->middleware('auth');
+  }
   /**
    * Display a listing of the resource.
    *
@@ -24,12 +27,12 @@ class UserController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request) {
-    $user = new User;
+    $user           = new User;
     $user->username = $request->input('username');
-    $user->password = Hash::make($request->input('password'), [ 'rounds' => 12 ]);
+    $user->password = Hash::make($request->input('password'), ['rounds' => 12]);
     $user->save();
 
-    return response()->json([ 'success' => true ], 200);
+    return response()->json(['success' => true], 200);
   }
 
   /**

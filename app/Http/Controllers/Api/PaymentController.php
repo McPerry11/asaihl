@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class PaymentController extends Controller
-{
+class PaymentController extends Controller {
+  public function __construct() {
+    $this->middleware('auth');
+  }
   /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
-  {
+  public function index() {
     //
   }
 
@@ -23,11 +24,10 @@ class PaymentController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
+  public function store(Request $request) {
     if ($request->hasFile('payment_slip')) {
-      $barcode = $request->input('barcode'); 
-      $registrant = \App\Profile::where('barcode', $barcode)->get(); 
+      $barcode    = $request->input('barcode');
+      $registrant = \App\Profile::where('barcode', $barcode)->get();
 
       $file = $request->file('payment_slip');
       $name = time() . '.' . $file->getClientOriginalExtension();
@@ -41,8 +41,7 @@ class PaymentController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
-  {
+  public function show($id) {
     //
   }
 
@@ -53,8 +52,7 @@ class PaymentController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
-  {
+  public function update(Request $request, $id) {
     //
   }
 
@@ -64,8 +62,7 @@ class PaymentController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
+  public function destroy($id) {
     //
   }
 }

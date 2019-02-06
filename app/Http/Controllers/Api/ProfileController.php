@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class ProfileController extends Controller
-{
+class ProfileController extends Controller {
+  public function __construct() {
+    $this->middleware('auth');
+  }
   /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
-  {
-    
+  public function index() {
+
   }
 
   /**
@@ -23,9 +24,8 @@ class ProfileController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-    
+  public function store(Request $request) {
+
   }
 
   /**
@@ -34,9 +34,8 @@ class ProfileController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
-  {
-    
+  public function show($id) {
+
   }
 
   /**
@@ -46,9 +45,8 @@ class ProfileController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
-  {
-    
+  public function update(Request $request, $id) {
+
   }
 
   /**
@@ -57,8 +55,7 @@ class ProfileController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-    
+  public function destroy($id) {
+
   }
 }
