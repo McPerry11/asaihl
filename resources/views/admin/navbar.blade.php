@@ -24,7 +24,7 @@
   <div class="uk-navbar-right">
     <ul class="uk-navbar-nav">
       <li class="uk-margin-right">
-        <a href="logout">
+        <a href="/asaihl/public/admin/logout">
           <span class="uk-hidden@m"><i class="fas fa-sign-out-alt"></i></span>
           <span class="uk-visible@m">Sign Out</span>
         </a>
