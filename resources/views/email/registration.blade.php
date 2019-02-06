@@ -4,4 +4,6 @@ Thank you for participating in the 2019 ASAIHL International Conference! Please 
 <br><br>
 Your barcode number is <strong>{{ $profile->barcode }}</strong>.
 <br><br>
+{!! DNS1D::getBarcodeHTML($profile->barcode, "C39") !!}
+<br><br>
 Thank you!
