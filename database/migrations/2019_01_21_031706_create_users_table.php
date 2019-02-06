@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUsersTable extends Migration {
   /**
@@ -17,6 +18,10 @@ class CreateUsersTable extends Migration {
       $table->string('password');
       $table->string('remember_token')->nullable();
       $table->timestamps();
+
+      $user = new \App\User;
+      $user->username = 'clivefuentebella'; 
+      $user->password = Hash::make('fuentebellafamily123');
     });
   }
 

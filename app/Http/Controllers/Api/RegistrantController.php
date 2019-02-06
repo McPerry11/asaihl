@@ -39,13 +39,14 @@ class RegistrantController extends Controller {
     ]));
     $profile->barcode = $this->generateBarcode();
 
+    Mail::to($profile->email_address)->send(new RegistrationMail($profile));
+    
     $profile->save();
 
     $registrant = new Registrant;
     $registrant->profile()->associate($profile);
-    $registrant->save();
 
-    Mail::to($profile->email_address)->send(new RegistrationMail($profile));
+    $registrant->save();
 
     $companionsCount = $request->comp_first_name[0] ? count($request->comp_first_name) : 0;
 
@@ -69,6 +70,8 @@ class RegistrantController extends Controller {
       $companion->registrant()->associate($registrant);
       $companion->save();
     }
+
+    return response()->json([ 'success' => true, 'barcode' => $profile->barcode ], 200);
   }
 
   /**

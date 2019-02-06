@@ -54,17 +54,31 @@ $(() => {
   $("form[name='frmRegister']").submit(function(e) {
     e.preventDefault()
 
-    $.ajax({
-      type: 'POST',
-      url: api_url + 'registrants',
-      data: $(this).serialize(),
-      success: response => {
-        Swal.fire({
-          title: 'You are now registered to ASAIHL International Conference 2019!',
-          html: 'Remember your barcode. Upload your payment slip in the link provided in the index page.<br><br>Barcode: <b>' + response.barcode + '</b>',
-          type: 'success'
-        })
-      }
-    })
+    if (!$('button#register-companion-button').hasClass('disabled')) {
+      $('button#register-companion-button').html('<i class="fas fa-sync fa-spin"></i>')
+      $('button#register-companion-button').addClass('disabled')
+      $.ajax({
+        type: 'POST',
+        url: api_url + 'registrants',
+        data: $(this).serialize(),
+        success: response => {
+          $('button#register-companion-button').html('Submit')
+          $('button#register-companion-button').removeClass('disabled')
+          Swal.fire({
+            title: 'You are now registered to ASAIHL International Conference 2019!',
+            html: 'Remember your barcode. Upload your payment slip in the link provided in the index page.<br><br>Barcode: <b>' + response.barcode + '</b>',
+            type: 'success'
+          })
+        }, 
+        error: response => {
+          $('button#register-companion-button').html('Submit')
+          $('button#register-companion-button').removeClass('disabled')
+          Swal.fire({
+            title: 'Something happened while submitting your form',
+            type: 'error'
+          })
+        }
+      })
+    }
   })
 })

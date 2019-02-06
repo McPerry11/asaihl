@@ -12,9 +12,9 @@ $(() => {
         Swal.fire({
           title: 'A new user has been added!',
           type: 'success'
+        }).then(result => {
+          location.reload()
         })
-        $('input[name="username"]').val('')
-        $('input[name="password"]').val('')
       }
     })
   })
@@ -35,9 +35,16 @@ $(() => {
         Swal.fire({
           title: 'A registrant has been verified as participant!', 
           type: 'success'
+        }).then(result => {
+          location.reload()          
         })
-        UIkit.modal($('#confirm-verify')).hide()
       }
     })
+  })
+
+  $('input[name="search-registrant"]').keydown(function(e) {
+    if (e.keyCode == 13) {
+      window.location.href = main_url + 'admin/dashboard?r=' + $('input[name="search-registrant"]').val() + '&u=' + $('input[name="search-user"]').val()
+    }
   })
 })

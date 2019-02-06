@@ -49,8 +49,8 @@
               <div class="uk-width-1-6"><h1>1</h1></div>
               <div class="uk-width-5-6 uk-margin-bottom">
                 <div class="uk-margin-small">
-                  <input class="uk-input uk-width-1-3" placeholder="First Name" name="comp_first_name[]">
-                  <input class="uk-input uk-width-1-3" placeholder="Last Name" name="comp_last_name[]">
+                  <input class="uk-input uk-width-1-3" placeholder="Family Name" name="comp_last_name[]">
+                  <input class="uk-input uk-width-1-3" placeholder="Given Name" name="comp_first_name[]">
                   <input class="uk-input uk-width-1-6" placeholder="MI" name="comp_middle_initial[]">
                 </div>
 
