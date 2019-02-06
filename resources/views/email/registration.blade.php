@@ -4,6 +4,6 @@ Thank you for participating in the 2019 ASAIHL International Conference! Please 
 <br><br>
 Your barcode number is <strong>{{ $profile->barcode }}</strong>.
 <br><br>
-<img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($profile->barcode, "C39+") }}" alt="barcode">
+<img src="{{ str_replace("\\", "", url(DNS1D::getBarcodePNGPath($profile->barcode, "C39+"))) }}" alt="barcode">
 <br><br>
 Thank you!
