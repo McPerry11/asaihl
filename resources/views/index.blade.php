@@ -33,7 +33,7 @@
   <div class="uk-modal-dialog uk-modal-body">
       <h2 class="uk-modal-title">Upload payment slip</h2>
       <p>Upload your payment slip here. Your barcode is also needed to distinguish you from other users.</p>
-      <form enctype="mulipart/form-data" method="POST">
+      <form enctype="mulipart/form-data" method="POST" action="javascript:void(0)">
         @csrf
         <input type="text" name="barcode" placeholder="Barcode" class="uk-input uk-margin-bottom">
         Payment slip: <input type="file" name="payment_slip"><br>
