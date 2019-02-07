@@ -83,9 +83,9 @@
               @foreach($users as $user)
                 <tr>
                   <td>
-                    <span class="uk-float-right actions">
+                    <!-- <span class="uk-float-right actions">
                       <a href="#"><i class="fas fa-times"></i></a>
-                    </span>
+                    </span> -->
                     {{ $user->username }}
                   </td>
                 </tr>
