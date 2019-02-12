@@ -48,7 +48,7 @@ $(() => {
       type: 'DELETE',
       success: response => {
         Swal.fire({
-          title: 'A registrant has been verified as participant!', 
+          title: 'A user has successfully been deleted!', 
           type: 'success'
         }).then(result => {
           location.reload()          
