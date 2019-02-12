@@ -1,9 +1,11 @@
 let compCounter = 2
 $(() => {
+  $('div#visa-application').hide()
+
   Swal.fire({
     icon: 'info', 
     title: 'Privacy Notice', 
-    text: 'The event organizers collected information from you as participants for the purposes of registration and overall event management. By providing your information, you are giving your consent to us to use you information for the aforementioned purposes.\n\nAfter conclusion of the event and completion of all necessary reports, your personal data will be saved in secure files for future reference and networking activities.\n\nIf you do not wish to be contacted further after this event, kindly inform the organizers.'
+    html: 'The event organizers collected information from you as participants for the purposes of registration and overall event management. By providing your information, you are giving your consent to us to use you information for the aforementioned purposes.\n\nAfter conclusion of the event and completion of all necessary reports, your personal data will be saved in secure files for future reference and networking activities.\n\nIf you do not wish to be contacted further after this event, kindly inform the organizers.'
   })
 
   $('div#register-companion').hide()
@@ -84,6 +86,18 @@ $(() => {
           })
         }
       })
+    }
+  })
+
+  $("input#input-foreign").click(function(e) {
+    if ($(this).prop('checked')) {
+      $('div#visa-application').show()
+    }
+  })
+
+  $("input#input-local").click(function(e) {
+    if ($(this).prop('checked')) {
+      $('div#visa-application').hide()
     }
   })
 })

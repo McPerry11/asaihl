@@ -10,7 +10,7 @@
 
   <title>ASAIHL International Conference</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Questrial|Quicksand|Ubuntu+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abel|Montserrat|Ubuntu+Mono" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
   <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
@@ -19,6 +19,9 @@
   @yield('links')
 </head>
 <body>
+  <div id="loader">
+    <img src="{{ asset('images/loader.gif') }}">
+  </div>
   @yield('body')
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

@@ -4,9 +4,8 @@ nav.uk-navbar-container {
 
 ul.uk-navbar-nav li a {
   color: white !important;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.25em;
-  font-weight: bold;
 }
 
 ul.uk-navbar-nav li a:hover {

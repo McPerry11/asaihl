@@ -13,13 +13,14 @@ div#frontliner-header, div#frontliner-header h1 {
   color: white;
 }
 
-div#frontliner-header a#frontliner-header-about {
+div#frontliner-header button#frontliner-header-about {
   color: white;
   text-decoration: underline;
 }
 
-div#frontliner-header a#frontliner-header-register {
+div#frontliner-header button#frontliner-header-register {
   color: white;
+  background-color: transparent;
   border: 2px solid white;
   border-radius: 10px;
   padding: 10px 15px;

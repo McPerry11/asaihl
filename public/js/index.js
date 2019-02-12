@@ -1,6 +1,4 @@
 $(() => {
-  $('div#frontliner-header').hide()
-  $('div#frontliner-header').fadeIn(1000)
   $('button#upload-slip-button').click(e => {
     e.preventDefault()
 

@@ -42,6 +42,21 @@ $(() => {
     })
   })
 
+  $('a#delete-user').click(function(e) {
+    $.ajax({
+      url: api_url + 'users/' + $(this).data('id'),
+      type: 'DELETE',
+      success: response => {
+        Swal.fire({
+          title: 'A registrant has been verified as participant!', 
+          type: 'success'
+        }).then(result => {
+          location.reload()          
+        })
+      }
+    })
+  })
+
   $('input[name="search-registrant"]').keydown(function(e) {
     if (e.keyCode == 13) {
       window.location.href = main_url + 'admin/dashboard?r=' + $('input[name="search-registrant"]').val() + '&u=' + $('input[name="search-user"]').val()

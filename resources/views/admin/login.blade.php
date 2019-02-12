@@ -18,18 +18,19 @@
         2019 ASAIHL<br>
         Control Panel
       </h1>
-      <p class="uk-margin-remove-top uk-text-muted uk-text-bold">
+      <p class="uk-margin-remove-top uk-text-muted">
         Manage and monitor the participants of the event in this control panel.
       </p>
       <form method="post">
+        @csrf
         <div class="uk-margin">
-          <input type="text" class="uk-input uk-width-1-2@m" placeholder="Username">
+          <input type="text" class="uk-input uk-width-1-2@m" placeholder="Username" name="username">
         </div>
         <div class="uk-margin">
-          <input type="password" class="uk-input uk-width-1-2@m" placeholder="Password">
+          <input type="password" class="uk-input uk-width-1-2@m" placeholder="Password" name="password">
         </div>
+        <button class="uk-margin-top uk-margin-large-bottom" id="frontliner-header-register">Sign In</button>
       </form>
-      <a class="uk-margin-top uk-margin-large-bottom" href="{{ url("admin/dashboard") }}" id="frontliner-header-register">Sign In</a><br>
     </div>
   </div>
 </div>

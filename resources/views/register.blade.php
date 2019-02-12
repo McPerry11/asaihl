@@ -22,6 +22,20 @@
           <div id="register-info">
             <h4 class="uk-text-center">Personal Information</h4>
               <div class="uk-margin">
+                Citizenship<br>
+                <div>
+                  <span class="uk-margin-right">
+                    <input type="radio" name="citizenship" id="input-local" class="uk-radio" value="LOCAL"> Local
+                  </span>
+                  <span class="uk-margin-right">
+                    <input type="radio" name="citizenship" id="input-foreign" value="FOREIGN" class="uk-radio"> Foreign  
+                  </span>
+                </div>
+                <div id="visa-application">
+                  <small>Please refer to this link to inquire about Philippine Visa application: <a href="http://consular.dfa.gov.ph/visainformation" target="_blank">http://consular.dfa.gov.ph/visainformation</a></small>
+                </div>
+              </div>
+              <div class="uk-margin">
                 Name<br>
                 <input class="uk-input uk-width-1-3" placeholder="Family Name" name="last_name">
                 <input class="uk-input uk-width-1-3" placeholder="Given Name" name="first_name">

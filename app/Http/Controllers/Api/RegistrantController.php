@@ -34,6 +34,7 @@ class RegistrantController extends Controller {
     $profile = new Profile;
 
     $profile->fill($request->only([
+      'citizenship',
       'first_name',
       'last_name',
       'middle_initial',

@@ -12,6 +12,7 @@ class Profile extends Model {
   protected $fillable = [
     'barcode',
     'email_address',
+    'citizenship',
     'first_name',
     'middle_initial',
     'last_name',

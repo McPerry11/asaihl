@@ -2,19 +2,20 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
 }
 
 body, 
 h4, h5, h6 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3 {
-  font-family: 'Questrial', sans-serif;
+  font-family: 'Abel', sans-serif;
 }
 
 h2.swal2-title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
 
@@ -25,4 +26,21 @@ button.swal2-confirm {
 div.uk-tooltip {
   background: #222;
   border-radius: 10px;
+}
+
+div#loader { 
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  z-index: 1000;
+}
+
+div#loader img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
