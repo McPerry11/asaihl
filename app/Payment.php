@@ -10,7 +10,15 @@ class Payment extends Model {
    * @var array
    */
   protected $fillable = [
-    'payment_file'
+    'payment_file', 'remarks'
+  ];
+
+  /**
+   * @var array
+   */
+  protected $attributes = [
+    'payment_file' => null,
+    'remarks'      => null
   ];
 
   /**

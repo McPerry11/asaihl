@@ -3,9 +3,10 @@ $(() => {
   $('div#visa-application').hide()
 
   Swal.fire({
-    icon: 'info', 
-    title: 'Privacy Notice', 
-    html: 'The event organizers collected information from you as participants for the purposes of registration and overall event management. By providing your information, you are giving your consent to us to use you information for the aforementioned purposes.\n\nAfter conclusion of the event and completion of all necessary reports, your personal data will be saved in secure files for future reference and networking activities.\n\nIf you do not wish to be contacted further after this event, kindly inform the organizers.'
+    icon: 'info',
+    title: 'Privacy Notice',
+    html:
+      'The event organizers collected information from you as participants for the purposes of registration and overall event management. By providing your information, you are giving your consent to us to use you information for the aforementioned purposes.\n\nAfter conclusion of the event and completion of all necessary reports, your personal data will be saved in secure files for future reference and networking activities.\n\nIf you do not wish to be contacted further after this event, kindly inform the organizers.'
   })
 
   $('div#register-companion').hide()
@@ -73,10 +74,15 @@ $(() => {
           $('button#register-companion-button').removeClass('disabled')
           Swal.fire({
             title: 'You are now registered to ASAIHL International Conference 2019!',
-            html: 'Remember your barcode. Upload your payment slip in the link provided in the index page.<br><br>Barcode: <b>' + response.barcode + '</b>',
+            html:
+              'Remember your barcode. Upload your payment slip in the link provided in the index page.<br><br>Barcode: <b>' +
+              response.barcode +
+              '</b>',
             type: 'success'
+          }).then(() => {
+            location.href = base_url
           })
-        }, 
+        },
         error: response => {
           $('button#register-companion-button').html('Submit')
           $('button#register-companion-button').removeClass('disabled')
@@ -89,13 +95,13 @@ $(() => {
     }
   })
 
-  $("input#input-foreign").click(function(e) {
+  $('input#input-foreign').click(function(e) {
     if ($(this).prop('checked')) {
       $('div#visa-application').show()
     }
   })
 
-  $("input#input-local").click(function(e) {
+  $('input#input-local').click(function(e) {
     if ($(this).prop('checked')) {
       $('div#visa-application').hide()
     }

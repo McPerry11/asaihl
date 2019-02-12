@@ -28,6 +28,6 @@ class RegistrationMail extends Mailable {
   public function build() {
     return $this
       ->subject('2019 ASAIHL International Conference')
-      ->view('email.registration', ['profile' => $this->profile]);
+      ->view('email.registration', ['profile' => $this->profile, 'price' => $this->profile->citizenship == 'LOCAL' ? '₱6000.00' : '$300.00']);
   }
 }

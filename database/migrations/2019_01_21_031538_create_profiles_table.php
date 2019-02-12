@@ -20,7 +20,7 @@ class CreateProfilesTable extends Migration {
       $table->string('last_name');
       $table->string('contact_number')->nullable();
       $table->string('institution')->nullable();
-
+      $table->enum('citizenship', ['LOCAL', 'FOREIGN']);
       $table->timestamps();
     });
   }

@@ -6,6 +6,15 @@
 
 @section('scripts')
 <script src="{{ asset('js/index.js') }}"></script>
+@if(session()->has('alert'))
+<script>
+  Swal.fire({
+    type: "{{ session("alert")["type"] }}",
+    title: "{{ session("alert")["title"] }}",
+    text: "{{ session("alert")["message"] }}"
+  })
+</script>
+@endif
 @endsection
 
 @section('body')
@@ -38,6 +47,7 @@
         <input type="text" name="barcode" placeholder="Barcode" class="uk-input uk-margin-bottom">
         Payment slip: <input type="file" name="payment_slip"><br>
         <button id="upload-slip-button" class="uk-margin-top">Upload your payment slip</button>
+        <button id="paypal-button" class="uk-margin-top">Pay with PayPal</button>
       </form>
   </div>
 </div>

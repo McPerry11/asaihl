@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\RegistrationMail;
 use App\Profile;
 use App\Registrant;
+use DB;
 use Illuminate\Http\Request;
 use Mail;
 
@@ -31,52 +32,66 @@ class RegistrantController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request) {
-    $profile = new Profile;
+    DB::beginTransaction();
 
-    $profile->fill($request->only([
-      'citizenship',
-      'first_name',
-      'last_name',
-      'middle_initial',
-      'institution',
-      'email_address',
-      'contact_number'
-    ]));
-    $profile->barcode = $this->generateBarcode();
-
-    Mail::to($profile->email_address)->send(new RegistrationMail($profile));
-    
-    $profile->save();
-
-    $registrant = new Registrant;
-    $registrant->profile()->associate($profile);
-
-    $registrant->save();
-
-    $companionsCount = $request->comp_first_name[0] ? count($request->comp_first_name) : 0;
-
-    for ($i = 0; $i < $companionsCount; $i++) {
+    try {
       $profile = new Profile;
 
-      $profile->first_name     = $request->comp_first_name[$i];
-      $profile->last_name      = $request->comp_last_name[$i];
-      $profile->middle_initial = $request->comp_middle_initial[$i];
-      $profile->institution    = $request->comp_institution[$i];
-      $profile->email_address  = $request->comp_email_address[$i];
-      $profile->contact_number = $request->comp_contact_number[$i];
-      $profile->barcode        = $this->generateBarcode();
+      $profile->fill($request->only([
+        'citizenship',
+        'first_name',
+        'last_name',
+        'middle_initial',
+        'institution',
+        'email_address',
+        'contact_number'
+      ]));
+      $profile->barcode = $this->generateBarcode();
+
+      $registrantBarcode = $profile->barcode;
+
+      $mails[] = $profile;
 
       $profile->save();
 
-      Mail::to($profile->email_address)->send(new RegistrationMail($profile));
+      $registrant = new Registrant;
+      $registrant->profile()->associate($profile);
 
-      $companion = new Companion;
-      $companion->profile()->associate($profile);
-      $companion->registrant()->associate($registrant);
-      $companion->save();
+      $registrant->save();
+
+      $companionsCount = $request->comp_first_name[0] ? count($request->comp_first_name) : 0;
+
+      for ($i = 0; $i < $companionsCount; $i++) {
+        $profile = new Profile;
+
+        $profile->first_name     = $request->comp_first_name[$i];
+        $profile->last_name      = $request->comp_last_name[$i];
+        $profile->middle_initial = $request->comp_middle_initial[$i];
+        $profile->institution    = $request->comp_institution[$i];
+        $profile->email_address  = $request->comp_email_address[$i];
+        $profile->contact_number = $request->comp_contact_number[$i];
+        $profile->barcode        = $this->generateBarcode();
+
+        $mails[] = $profile;
+
+        $profile->save();
+
+        $companion = new Companion;
+        $companion->profile()->associate($profile);
+        $companion->registrant()->associate($registrant);
+        $companion->save();
+      }
+
+      DB::commit();
+    } catch (\Exception $e) {
+      DB::rollback();
+      return response()->json(['success' => false, 'error' => 'There was an error from our end. Sorry for inconvenience.'], 500);
+    } finally {
+      foreach ($mails as $profile) {
+        Mail::to($profile->email_address)->send(new RegistrationMail($profile));
+      }
+      return response()->json(['success' => true, 'barcode' => $registrantBarcode], 200);
     }
-
-    return response()->json([ 'success' => true, 'barcode' => $profile->barcode ], 200);
   }
 
   /**
@@ -86,7 +101,7 @@ class RegistrantController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function show($id) {
-    return Registrant::with('profile', 'companions')->where('id', $id)->findOrFail();
+    return Registrant::with('profile', 'companions')->where('id', $id)->firstOrFail();
   }
 
   /**

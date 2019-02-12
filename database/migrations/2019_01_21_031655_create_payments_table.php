@@ -15,7 +15,10 @@ class CreatePaymentsTable extends Migration {
       $table->increments('id');
       $table->unsignedInteger('registrant_id');
       $table->foreign('registrant_id')->references('id')->on('registrants');
-      $table->string('payment_file');
+      $table->enum('type', ['PAYPAL', 'PAYMENT_SLIP']);
+      $table->string('payment_file')->nullable();
+      $table->float('amount')->nullable();
+      $table->string('remarks')->nullable();
       $table->timestamps();
     });
   }

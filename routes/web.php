@@ -12,7 +12,7 @@
  */
 
 // Index routes
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('index');
 Route::get('/register', 'IndexController@register');
 Route::post('/register', 'IndexController@register');
 
@@ -23,4 +23,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
   Route::get('/dashboard', 'AdminController@index');
   Route::get('/logs', 'AdminController@logs');
   Route::get('/logout', 'AdminController@logout');
+});
+
+Route::prefix('payment')->group(function () {
+  Route::get('generate', 'PaypalController@generate');
+  Route::get('confirm', 'PaypalController@confirm');
 });

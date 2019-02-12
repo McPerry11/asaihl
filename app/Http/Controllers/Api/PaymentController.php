@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Payment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller {
@@ -31,7 +32,17 @@ class PaymentController extends Controller {
 
       $file = $request->file('payment_slip');
       $name = time() . '.' . $file->getClientOriginalExtension();
-      $file->move(public_path('/uploads/' . $request->input('barcode')), $name);
+      $file->move(public_path('/uploads/' . $barcode), $name);
+
+      $payment = new Payment;
+      $payment->registrant()->associate(
+        Registrant::whereHas('profile', function ($query) use ($barcode) {
+          $query->where('barcode', $barcode);
+        })->first()
+      );
+      $payment->type         = 'PAYMENT_SLIP';
+      $payment->payment_file = $name;
+      $payment->save();
     }
   }
 
