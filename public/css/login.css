@@ -14,11 +14,14 @@ div#frontliner-header, div#frontliner-header h1 {
 }
 
 div#frontliner-header button#frontliner-header-about {
+  font-family: 'Montserrat';
   color: white;
   text-decoration: underline;
 }
 
 div#frontliner-header button#frontliner-header-register {
+  font-family: 'Montserrat' !important;
+  font-size: 1em;
   color: white;
   background-color: transparent;
   border: 2px solid white;

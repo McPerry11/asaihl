@@ -28,6 +28,10 @@ class RegistrationMail extends Mailable {
   public function build() {
     return $this
       ->subject('2019 ASAIHL International Conference')
-      ->view('email.registration', ['profile' => $this->profile, 'price' => $this->profile->citizenship == 'LOCAL' ? '₱6000.00' : '$300.00']);
+      ->view('email.registration', [
+        'profile' => $this->profile,
+        'price' => $this->profile->citizenship == 'LOCAL' ? 6000 : 300,
+        'count' => \App\Registrant::with('companions')->where('profile_id', $this->profile->id )->first()->companions->count()
+      ]);
   }
 }

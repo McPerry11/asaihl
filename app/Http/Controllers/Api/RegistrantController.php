@@ -72,7 +72,7 @@ class RegistrantController extends Controller {
         $profile->contact_number = $request->comp_contact_number[$i];
         $profile->barcode        = $this->generateBarcode();
 
-        $mails[] = $profile;
+        // $mails[] = $profile;
 
         $profile->save();
 

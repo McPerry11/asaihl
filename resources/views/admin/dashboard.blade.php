@@ -31,6 +31,7 @@
               @foreach($registrants as $registrant)
                 <tr>
                   <td>
+              {{ \App\Registrant::with('companions')->where('profile_id', $registrant->profile->id)->first()->companions->count() }}
                     <span class="uk-float-right actions">
                       @if(\App\Participant::where('profile_id', $registrant->profile->id)->count() <= 0) 
                         <a href="#" data-name="{{ $registrant->profile->first_name }} {{ $registrant->profile->middle_initial }}. {{ $registrant->profile->last_name }}" data-id="{{ $registrant->profile->id }}" uk-toggle="target: #confirm-verify"><i class="far fa-check-square"></i></a>
@@ -40,6 +41,16 @@
                     @if(\App\Participant::where('profile_id', $registrant->profile->id)->count() > 0) 
                       (Participant)
                     @endif
+                    <br>
+                    <small class="uk-text-bold">
+                      Expected amount to be paid: 
+                      @if($registrant->profile->citizenship == 'LOCAL')
+                        ₱{{ 6000 * ($registrant->companions->count() + 1) }}&nbsp;
+                      @else
+                        ${{ 300 * ($registrant->companions->count() + 1) }}&nbsp;
+                      @endif
+                      (Companions: {{ $registrant->companions->count() }})
+                    </small>
                     <br>
                     <small class="uk-text-muted">
                       {{ $registrant->profile->email_address }}<br>

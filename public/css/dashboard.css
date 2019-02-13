@@ -20,7 +20,7 @@ button.classic {
   border: 1px solid #ccc;
   border-radius: 14.9px;
   padding: 10px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: white;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
@@ -38,7 +38,7 @@ button.danger {
   border-radius: 14.9px;
   padding: 10px;
   color: white;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: white;
   cursor: pointer;
   transition: background-color 0.2s;
