@@ -58,7 +58,10 @@
           </div>
 
           <div id="register-companion">
-            <h4 class="uk-text-center">Companion Management</h4>
+            <h4 class="uk-text-center uk-margin-remove-bottom">Companion Management</h4>
+            <div class="uk-text-muted uk-text-small uk-margin-bottom">
+              If you don't have any companion, you can immediately proceed to registration by clicking the <strong>Submit</strong> button.
+            </div>
             <div uk-grid class="uk-grid-collapse" id="register-companion-list">
               <div class="uk-width-1-6"><h1>1</h1></div>
               <div class="uk-width-5-6 uk-margin-bottom">
@@ -83,7 +86,7 @@
               </div>
             </div>
             <a href="javascript:void(0)" id="register-companion-add">+ Add another companion</a><br><br>
-            <button id="register-companion-button">Submit</button>
+            <button id="register-companion-button">Submit</button><br>
           </div>
         </div>
       </form>
