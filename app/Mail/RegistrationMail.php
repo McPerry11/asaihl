@@ -27,6 +27,7 @@ class RegistrationMail extends Mailable {
    */
   public function build() {
     return $this
+      ->from('Association of Southeast Asian Institution of Higher Learning, Inc.')
       ->subject('2019 ASAIHL International Conference')
       ->view('email.registration', [
         'profile' => $this->profile,
