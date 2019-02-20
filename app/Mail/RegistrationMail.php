@@ -27,12 +27,12 @@ class RegistrationMail extends Mailable {
    */
   public function build() {
     return $this
-      ->from('Association of Southeast Asian Institution of Higher Learning, Inc.')
+      ->from('uecsrnd@gmail.com', 'Association of Southeast Asian Institution of Higher Learning, Inc.')
       ->subject('2019 ASAIHL International Conference')
       ->view('email.registration', [
         'profile' => $this->profile,
-        'price' => $this->profile->citizenship == 'LOCAL' ? 6000 : 300,
-        'count' => \App\Registrant::with('companions')->where('profile_id', $this->profile->id )->first()->companions->count()
+        'price'   => $this->profile->citizenship == 'LOCAL' ? 6000 : 300,
+        'count'   => \App\Registrant::with('companions')->where('profile_id', $this->profile->id)->first()->companions->count()
       ]);
   }
 }
