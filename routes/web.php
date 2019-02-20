@@ -13,6 +13,7 @@
 
 // Index routes
 Route::get('/', 'IndexController@index')->name('index');
+Route::get('/update', 'IndexController@update');
 Route::get('/register', 'IndexController@register');
 Route::post('/register', 'IndexController@register');
 
