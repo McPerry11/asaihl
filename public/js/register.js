@@ -1,3 +1,5 @@
+const base_url = $('base').attr('href')
+
 let compCounter = 2
 $(() => {
   $('div#visa-application').hide()
